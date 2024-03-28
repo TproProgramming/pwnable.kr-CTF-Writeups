@@ -20,7 +20,7 @@ total 20
 -r-sr-x--- 1 random_pwn random 8538 Jun 30  2014 random
 -rw-r--r-- 1 root       root    301 Jun 30  2014 random.c
 ```
-We have read permissions for random & random.c files. We can execute the file named random. We have no permissions for the flag file.
+        We have read permissions for random & random.c files. We can execute the file named             random. We have no permissions for the flag file.
 
 + ### Analyze the random.c code
 ```bash
