@@ -20,7 +20,7 @@ total 20
 -r-sr-x--- 1 random_pwn random 8538 Jun 30  2014 random
 -rw-r--r-- 1 root       root    301 Jun 30  2014 random.c
 ```
-        We have read permissions for random & random.c files. We can execute the file named             random. We have no permissions for the flag file.
+We have read permissions for random & random.c files. We can execute the file named             random. We have no permissions for the flag file.
 
 + ### Analyze the random.c code
 ```bash
@@ -50,27 +50,37 @@ After analyzing the code I know that to gain access to the flag file I need to f
 0xdeadbeef converted to decimal: 3735928559
 ```
 + ### Modify and run the random.c code in my own enviroment
-  I modified the code to print the value of the random number:
-  '''bash
-  #include <stdio.h>
+  I modified the code to print the value of the random number.
+  ```bash
+  printf("Random: %u\n", random);
+  ```
+  Output from the modified code:
+  ```bash
+  Random: 1804289383
+  ```
+  I double-checked this by running the same code on an online C compiler and got the same 
+  output for random. Now I have the decimal values from 0xdeadbeef and random.
 
-  int main(){
-    unsigned int random;
-    random = rand();
-    printf("Random Number: %u\n", random);
-    
-    unsigned int key=0;
-    scanf("%d", &key);
-    
-    if((key ^ random) == 0xdeadbeef){
-        printf("Good!\n");
-        system("/bin/cat flag");
-        return 0;
-    }
-    
-    printf("Wrong, try 2^32 cases");
-    return 0;
-  }
++ ### Solve for key
+  I created a simple Python code to solve for key.
+  ```bash
+  deadbeef = 3735928559
+  random = 1804289383
+
+  print(f"Deadbeef: {deadbeef}\n")
+  print(f"Random: {random}\n")
+
+  xor = deadbeef ^ random 
+  print(f"The XOR is: {xor}")
+  ```
+  #### Output:
+  ```bash
+  Deadbeef: 3735928559
+
+  Random: 1804289383
+
+  The XOR is: 3039230856
+  ```
 random@pwnable:~$ ./random
 3039230856
 Good!
