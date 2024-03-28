@@ -13,3 +13,38 @@ lubuntu@lubuntu~$ ssh random@pwnable.kr -p2222
 random@pwnable.kr's password:
 ```
 + Analyze the directory
+```bash
+random@pwnable:~$ ls -l
+total 20
+-r--r----- 1 random_pwn root     49 Jun 30  2014 flag
+-r-sr-x--- 1 random_pwn random 8538 Jun 30  2014 random
+-rw-r--r-- 1 root       root    301 Jun 30  2014 random.c
+```
+We have read permissions for random & random.c files. We can execute the file named random. We have no permissions for the flag file.
+
+
+
+random@pwnable:~$ cat random.c
+#include <stdio.h>
+
+int main(){
+        unsigned int random;
+        random = rand();        // random value!
+
+        unsigned int key=0;
+        scanf("%d", &key);
+
+        if( (key ^ random) == 0xdeadbeef ){
+                printf("Good!\n");
+                system("/bin/cat flag");
+                return 0;
+        }
+
+        printf("Wrong, maybe you should try 2^32 cases.\n");
+        return 0;
+}
+
+random@pwnable:~$ ./random
+3039230856
+Good!
+Mommy, I thought libc random is unpredictable...
