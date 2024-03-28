@@ -91,4 +91,5 @@ random@pwnable:~$ ./random
 If the XOR of the input key and the random number matches 0xdeadbeef, the program prints "Good!" and accesses the flag using system("/bin/cat flag").
 
 ## Conclusion
-By understanding the XOR operation, performing the inverse XOR calculation, and inputting the correct key, we successfully accessed the flag in the CTF challenge.
++ By understanding the XOR operation, performing the inverse XOR calculation, and inputting the correct key, we successfully accessed the flag in the CTF challenge.
++ The rand() function will produce the same sequence of pseudo-random numbers on each run. This is because the random number generator is initialized with a          default seed
