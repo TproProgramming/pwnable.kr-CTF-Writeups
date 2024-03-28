@@ -7,8 +7,9 @@ Daddy, teach me how to use random value in programming!
 ssh random@pwnable.kr -p2222 (pw:guest)
 
 # Solution Steps
--Access the Secure Shell
-'''bash
++ Access the Secure Shell
+```bash
 lubuntu@lubuntu~$ ssh random@pwnable.kr -p2222
-random@pwnable.kr's password: 
--Analyze the directory
+random@pwnable.kr's password:
+```
++ Analyze the directory
