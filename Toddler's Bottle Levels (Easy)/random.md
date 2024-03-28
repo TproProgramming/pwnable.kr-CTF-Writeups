@@ -6,13 +6,13 @@ In this write-up, I will discuss my steps to get the solution to random, a Captu
 Daddy, teach me how to use random value in programming!
 ssh random@pwnable.kr -p2222 (pw:guest)
 
-# Solution Steps
-+ ## Access the Secure Shell
+## Solution Steps
++ ### Access the Secure Shell
 ```bash
 lubuntu@lubuntu~$ ssh random@pwnable.kr -p2222
 random@pwnable.kr's password:
 ```
-+ # Analyze the directory
++ ### Analyze the directory
 ```bash
 random@pwnable:~$ ls -l
 total 20
