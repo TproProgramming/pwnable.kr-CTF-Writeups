@@ -81,7 +81,14 @@ After analyzing the code I know that to gain access to the flag file I need to f
 
   The XOR is: 3039230856
   ```
+  Now that I have the value of key, all I need to do is run the executable and capture the flag.
+
++ ### Capture the flag
+```bash
 random@pwnable:~$ ./random
 3039230856
-Good!
-Mommy, I thought libc random is unpredictable...
+```
+If the XOR of the input key and the random number matches 0xdeadbeef, the program prints "Good!" and accesses the flag using system("/bin/cat flag").
+
+## Conclusion
+By understanding the XOR operation, performing the inverse XOR calculation, and inputting the correct key, we successfully accessed the flag in the CTF challenge.
